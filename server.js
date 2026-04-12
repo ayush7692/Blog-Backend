@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 // Enable CORS
  
 app.use(cors({
-   origin: "https://blog-app-labi.vercel.app/",
-   credentials:true
+   origin: ["https://blog-app-labi.vercel.app", "http://localhost:5173"],
+   credentials: true
 }));
 
 // Routes
@@ -45,6 +45,10 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 // Enable CORS
  
 app.use(cors({
-   origin: ["https://blog-app-labi.vercel.app", "http://localhost:5173"],
+   origin: ["https://blog-app-ten-silk.vercel.app"],
    credentials: true
 }));
 
